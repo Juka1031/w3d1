@@ -41,6 +41,20 @@ class Array
     end
 end
 
-a = [1, 2, 3]
-p a.my_all? { |num| num > 1 } # => false
-p a.my_all? { |num| num < 4 } # => true
+class Array    
+    def my_flatten
+        newArr = []
+
+        self.each do |ele|                      
+            if ele.kind_of?(Array)      
+                newArr += ele.my_flatten                    
+            else                        
+                newArr << ele
+            end
+        end
+
+        return newArr
+    end
+end
+
+
